@@ -1,0 +1,22 @@
+@keyframes spin {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}
+.loadingIconSpin {
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.loadingContainer {
+    background: #90ee9069;
+    width: 75%;
+    margin: 33px auto;
+    display: flex;
+    padding: 25px;
+    border-radius: 10px;
+    font-family: cursive;
+    color: #777777;
+    box-shadow: 0 0 9px 0 #bebebe;
+}

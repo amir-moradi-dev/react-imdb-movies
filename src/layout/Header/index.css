@@ -1,0 +1,26 @@
+.header__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 66px;
+    font-size: 13px;
+    background: green;
+    color: white;
+}
+.header__navLeft {
+    width: 50%;
+}
+.header__navLeft>h2 {
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 4px black;
+    margin-left: 12px;
+}
+.header__navRight {
+    position: relative;
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    font-size: 18px;
+}

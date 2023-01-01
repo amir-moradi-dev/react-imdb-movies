@@ -1,0 +1,33 @@
+.burger__openIcon {
+    margin-top: 3px;
+    margin-right: 12px;
+}
+.burger__openList {
+    position: absolute;
+    top: 33px;
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+    background: #264e27;
+    flex-direction: column;
+    min-height: 266px;
+    align-items: flex-start;
+    list-style: none;
+    padding: 18px 0;
+}
+.burger__openList>li {
+    display: flex;
+    margin-top: 21px;
+    margin-left: 33px;
+}
+.burger__openList>li>svg {
+    color: #7bbdf1;
+    padding-right: 3px;
+}
+.burger__openList>li:hover {
+    color: lightblue;
+}
+.burger__close {
+    margin-top: 3px;
+    margin-right: 12px;
+}

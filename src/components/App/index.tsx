@@ -1,13 +1,10 @@
-import React from "react"
-import './index.css'
-import MovieList from "../MovieList";
+import classes from './index.module.css'
+import HomePage from "../../pages/HomePage";
 
 function App() {
 
     return <>
-        <div className={'text-center text-green-400'}>
-            <MovieList />
-        </div>
+        <HomePage />
     </>
 }
 

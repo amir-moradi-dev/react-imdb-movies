@@ -1,11 +1,11 @@
-import {MovieListType} from "../types";
+import {MovieDetailedType, MovieListType} from "../types";
+import {doesMovieExists} from "./doesMovieExists";
 
-function setMoviesToStorage(searchKey:string,data:MovieListType):boolean {
-    if(localStorage.getItem(searchKey)===null) {
-        localStorage.setItem(searchKey,JSON.stringify(data))
-        return true
-    }
-    return false
+function setMoviesToStorage(searchKey:string,data:MovieListType|MovieDetailedType) {
+    if(doesMovieExists(searchKey))
+        return new Error('Movie Already Exists...')
+    return localStorage.setItem(searchKey,JSON.stringify(data))
+
 }
 
 export {setMoviesToStorage}

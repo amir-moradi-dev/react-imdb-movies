@@ -1,5 +1,7 @@
+import {doesMovieExists} from "./doesMovieExists";
+
 function getMoviesFormStorage(searchKey:string) {
-    if(localStorage.getItem(searchKey)===null)
+    if(!doesMovieExists(searchKey))
         return null
     // @ts-ignore
     return JSON.parse(localStorage.getItem(searchKey))

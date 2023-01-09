@@ -19,6 +19,7 @@
     display: flex;
     margin-top: 21px;
     margin-left: 33px;
+    align-items: flex-end;
 }
 .burger__openList>li>svg {
     color: #7bbdf1;

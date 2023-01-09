@@ -1,0 +1,37 @@
+.favoriteMovies {
+    min-height: 100vh;
+}
+.emptyFavoriteMovies {
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+    margin: 0 auto;
+}
+.emptyFavoriteMovies>h5 {
+    display: flex;
+    background: #9ce29b70;
+    border-radius: 6px;
+    box-shadow: -5px 6px 4px 0 #bebdbd;
+    margin: 10px 15px;
+    margin-top: 33px;
+    padding: 33px 12px;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+.emptyFavoriteMovies>h6 {
+    display: flex;
+    background: rgba(155, 226, 215, 0.44);
+    border-radius: 6px;
+    box-shadow: -5px 6px 4px 0 #bebdbd;
+    margin: 10px 15px;
+    margin-top: 12px;
+    padding: 33px 12px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.emptyFavoriteMovies>h6>svg {
+
+}

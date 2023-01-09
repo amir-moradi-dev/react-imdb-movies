@@ -1,20 +1,21 @@
 import React from "react"
-import './index.css'
-import TheatersIcon from '@mui/icons-material/Theaters';
+import classes from './index.module.css'
 import BurgerMenu from "../../components/BurgerMenu";
+import {Link} from "react-router-dom";
+import {HOME_ROUTE} from "../../routes";
 
 function Header() {
 
     return <>
         <header>
-            <nav className={'header__nav'}>
-                <div className={'header__navLeft'}>
-                    <h2>
-                        <TheatersIcon />
+            <nav className={classes.headerNav}>
+                <Link className={classes.headerNavLeft} to={HOME_ROUTE}>
+                    <span>
+                        <img src={'/imdb.png'} alt={'branding_logo'} className={classes.siteLogoImage} />
                         {import.meta.env.VITE_SITE_NAME}
-                    </h2>
-                </div>
-                <div className={'header__navRight'}>
+                    </span>
+                </Link>
+                <div className={classes.headerNavRight}>
                     <BurgerMenu />
                 </div>
             </nav>

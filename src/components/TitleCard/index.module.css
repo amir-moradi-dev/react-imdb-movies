@@ -1,0 +1,18 @@
+.cardTitle {
+    display: flex;
+    margin: 12px;
+    border-radius: 7px;
+    width: 100%;
+    padding: 12px 0;
+    justify-content: space-around;
+    background: #76c36e54;
+}
+.cardTitle>h4 {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    font-size: 15px;
+}
+.cardTitle>h4>svg {
+    padding-right: 3px;
+}

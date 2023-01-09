@@ -8,3 +8,6 @@
     margin: 13px 16px;
     box-shadow: 0 0 9px #bababa;
 }
+.movieContainer>img {
+    border-radius: 6px;
+}

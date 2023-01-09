@@ -1,0 +1,16 @@
+.showSearchedKey {
+    background: #9de4ed57;
+    width: 67%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    box-shadow: 1px 0 5px 0 #c9c9c9;
+    font-family: serif;
+    border-radius: 6px;
+    color: gray;
+    letter-spacing: 1px;
+}
+.showSearchedKey__icon {
+    display: flex;
+}

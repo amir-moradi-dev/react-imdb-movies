@@ -1,11 +1,13 @@
 import React from "react"
-import {LayoutProp} from "../types";
 import Header from "./Header";
+import {Outlet} from "react-router-dom";
+import Footer from "./Footer";
 
-function Layout(props:LayoutProp) {
+function Layout() {
     return <>
         <Header />
-        {props.children}
+        <Outlet />
+        <Footer />
     </>
 }
 

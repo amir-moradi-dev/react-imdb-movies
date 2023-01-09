@@ -1,0 +1,5 @@
+export const LAYOUT_ROUTE = '/'
+export const HOME_ROUTE = '/home'
+export const FAVORITE_ROUTE = '/favorites'
+export const MOVIE_DETAILS_ROUTE = '/movie-detail/:imdbID'
+export const CONTACT_US_ROUTE = '/contact-us'

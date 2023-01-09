@@ -1,0 +1,15 @@
+.movieDetailsContainer {
+    color: beige;
+}
+.movieGenre {
+    margin-top: 0;
+}
+.moviePlot {
+    background: #ffffff;
+    margin-top: 0;
+}
+.moviePlot>h4 {
+    padding: 9px 20px;
+    text-align: left;
+    line-height: 1.6;
+}

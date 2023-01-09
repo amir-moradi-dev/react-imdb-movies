@@ -1,12 +1,12 @@
 import React from "react";
-import './index.css'
+import classes from './index.module.css'
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 
 function Loading() {
     return <>
-        <div className={'loadingContainer'}>
+        <div className={classes.loadingContainer}>
             <h4>Loading Movies...</h4>
-            <AutorenewIcon className={'loadingIconSpin'}/>
+            <AutorenewIcon className={classes.loadingIconSpin}/>
         </div>
     </>
 }

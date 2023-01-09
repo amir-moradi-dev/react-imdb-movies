@@ -1,4 +1,4 @@
-.header__nav {
+.headerNav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8,16 +8,27 @@
     background: green;
     color: white;
 }
-.header__navLeft {
+.headerNavLeft {
     width: 50%;
 }
-.header__navLeft>h2 {
+.headerNavLeft>span {
     display: flex;
-    align-items: center;
     text-shadow: 0 0 4px black;
     margin-left: 12px;
+    font-size: 19px;
+    color: white;
+    font-weight: 400;
+    align-items: center;
 }
-.header__navRight {
+.headerNavLeft>span>svg {
+    color: #def6f9;
+}
+.siteLogoImage {
+    width: 33px;
+    height: 33px;
+    padding-right: 3px;
+}
+.headerNavRight {
     position: relative;
     display: flex;
     width: 50%;

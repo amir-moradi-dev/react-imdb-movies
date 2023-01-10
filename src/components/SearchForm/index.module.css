@@ -35,3 +35,12 @@
 .searchForm>button:hover {
     background: #2196f3;
 }
+
+@media screen and (min-width: 699px){
+    .searchForm>input {
+        margin: 21px 99px;
+    }
+    .searchForm>button {
+        right: 99px;
+    }
+}

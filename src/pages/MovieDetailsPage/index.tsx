@@ -39,7 +39,7 @@ function MovieDetailsPage() {
         if (!detailedMovie)
             return <Loading/>
         return <>
-            <MovieCard >
+            <MovieCard className={classes.movieDetailsContainer} >
 
                 <MovieTitle movie={detailedMovie} />
 

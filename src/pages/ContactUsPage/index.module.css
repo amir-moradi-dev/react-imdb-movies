@@ -1,0 +1,39 @@
+.contactPageContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 9px;
+    background: #e7e7e729;
+    height: 100vh;
+}
+
+.cardTitle {
+    flex-direction: column;
+    align-items: center;
+    font-family: cursive;
+    letter-spacing: 1px;
+}
+.cardTitle>svg {
+    padding-bottom: 9px;
+}
+.cardTitleName {
+    background: #00800029;
+}
+.cardTitleEmail {
+    background: #ff00001f;
+}
+.cardTitleGithub {
+    background: #00008b1a;
+}
+.cardTitleTelegram {
+    background: #2196f324;
+}
+
+@media screen and (min-width: 700px) {
+    .contactPageContainer {
+        width: 66%;
+        margin: 0 auto;
+    }
+}

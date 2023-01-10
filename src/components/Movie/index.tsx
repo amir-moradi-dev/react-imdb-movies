@@ -6,12 +6,11 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import {Link} from "react-router-dom";
 import {StateContext} from "../../store/StateContext";
-import Loading from "../Loading";
 import MovieTitle from "../MovieTitle";
 import MovieCard from "../MovieCard";
 
 function Movie(movie:MovieType) {
-    const { loading:LoadingCtx,
+    const {
         favoriteMovies:FavoriteMoviesCtx,
         setFavoriteMovies:SetFavoritesCtx } = useContext(StateContext)
     const isThisMovieFavorite = FavoriteMoviesCtx.find( fav => fav.imdbID === movie.imdbID )
@@ -43,7 +42,6 @@ function Movie(movie:MovieType) {
     }
 
     return <>
-        {LoadingCtx&&<Loading />}
         <MovieCard>
 
             <MovieTitle movie={movie} />

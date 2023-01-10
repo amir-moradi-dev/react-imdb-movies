@@ -10,7 +10,7 @@ import {StateContext} from "../../store/StateContext"
 
 
 function MovieList() {
-    const {searchKey:SearchKeyCtx, setLoading:SetLoadingCtx}= useContext(StateContext)
+    const {searchKey:SearchKeyCtx, setLoading:SetLoadingCtx ,loading:LoadingCtx}= useContext(StateContext)
     const [movieName, setMovieName] = useState<string>('iron man')
     const [movieList,setMovieList] = useState<MovieListType|null>(getMoviesFormStorage(movieName))
 
@@ -42,6 +42,7 @@ function MovieList() {
 
     return <>
         <div className={classes.movieListContainer}>
+            {LoadingCtx&&<Loading />}
             {conditionalRendering()}
         </div>
     </>

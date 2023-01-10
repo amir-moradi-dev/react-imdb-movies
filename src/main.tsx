@@ -1,18 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import Layout from "./layout";
 import StateContextProvider from "./store/StateContext";
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route, createBrowserRouter, RouterProvider
+    createBrowserRouter, RouterProvider
 } from "react-router-dom";
-import FavoriteMoviesPage from "./pages/FavoriteMoviesPage";
-import {FAVORITE_ROUTE, HOME_ROUTE, LAYOUT_ROUTE, MOVIE_DETAILS_ROUTE} from "./routes";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
-import HomePage from "./pages/HomePage";
+import {CONTACT_US_ROUTE, FAVORITE_ROUTE, HOME_ROUTE, LAYOUT_ROUTE, MOVIE_DETAILS_ROUTE} from "./routes";
+// Needed Component
+import Layout from "./layout";
 import ErrorPage from "./pages/ErrorPage";
+// Lazy Component
+const HomePage = React.lazy(()=>import("./pages/HomePage"))
+const FavoriteMoviesPage = React.lazy(()=>import("./pages/FavoriteMoviesPage"))
+const MovieDetailsPage = React.lazy(()=>import("./pages/MovieDetailsPage"))
+const ContactUsPage = React.lazy(()=>import("./pages/ContactUsPage"))
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: MOVIE_DETAILS_ROUTE,
                 element: <MovieDetailsPage />
+            },
+            {
+                path: CONTACT_US_ROUTE,
+                element: <ContactUsPage />
             }
         ]
     }

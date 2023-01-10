@@ -1,5 +1,4 @@
 .movieDetailsContainer {
-    color: beige;
 }
 .movieGenre {
     margin-top: 0;
@@ -12,4 +11,12 @@
     padding: 9px 20px;
     text-align: left;
     line-height: 1.6;
+}
+
+
+@media screen and (min-width: 700px) {
+    .movieDetailsContainer {
+        width: 66%;
+        margin: 15px auto;
+    }
 }

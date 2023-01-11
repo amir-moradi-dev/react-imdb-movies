@@ -11,9 +11,12 @@
 
 .loadingContainer {
     background: #90ee9069;
-    width: 75%;
+    width: 77%;
+    height: 66px;
     margin: 33px auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 25px;
     border-radius: 10px;
     font-family: cursive;

@@ -1,10 +1,15 @@
 import {doesMovieExists} from "./doesMovieExists";
 
-function getMoviesFormStorage(searchKey:string) {
+function getMoviesFormStorage<T>(searchKey:string):T|null {
     if(!doesMovieExists(searchKey))
         return null
-    // @ts-ignore
-    return JSON.parse(localStorage.getItem(searchKey))
+    try{
+        // @ts-ignore
+        return JSON.parse(localStorage.getItem(searchKey)) as T
+    }
+    catch (e:any) {
+        throw new Error('Error Reading Data From Storage')
+    }
 }
 
 

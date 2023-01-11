@@ -8,11 +8,10 @@ import {getMoviesFormStorage} from "../../helper"
 import { v4 as uuid } from 'uuid'
 import {StateContext} from "../../store/StateContext"
 
-
 function MovieList() {
-    const {searchKey:SearchKeyCtx, setLoading:SetLoadingCtx ,loading:LoadingCtx}= useContext(StateContext)
+    const {searchKey:SearchKeyCtx, setLoading:SetLoadingCtx}= useContext(StateContext)
     const [movieName, setMovieName] = useState<string>('iron man')
-    const [movieList,setMovieList] = useState<MovieListType|null>(getMoviesFormStorage(movieName))
+    const [movieList,setMovieList] = useState<MovieListType|null>(getMoviesFormStorage<MovieListType>(movieName))
 
     useEffect(()=> {
         if (SearchKeyCtx)
@@ -22,7 +21,7 @@ function MovieList() {
     useEffect(()=>{
         (async ()=> {
             SetLoadingCtx(true)
-            const search= await fetchMoviesAndSave(movieName)
+            const search= await fetchMoviesAndSave<MovieListType>(movieName)
             setMovieList(search)
             SetLoadingCtx(false)
         })()
@@ -42,7 +41,6 @@ function MovieList() {
 
     return <>
         <div className={classes.movieListContainer}>
-            {LoadingCtx&&<Loading />}
             {conditionalRendering()}
         </div>
     </>

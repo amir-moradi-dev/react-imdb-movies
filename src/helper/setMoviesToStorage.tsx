@@ -1,10 +1,16 @@
-import {MovieDetailedType, MovieListType} from "../types";
 import {doesMovieExists} from "./doesMovieExists";
 
-function setMoviesToStorage(searchKey:string,data:MovieListType|MovieDetailedType) {
+function setMoviesToStorage<T>(searchKey:string,data:T):void {
     if(doesMovieExists(searchKey))
-        return new Error('Movie Already Exists...')
-    return localStorage.setItem(searchKey,JSON.stringify(data))
+        throw new Error('Movie Already Exists...')
+    try {
+        localStorage.setItem(searchKey,JSON.stringify(data))
+        return;
+    }
+    catch (e:any) {
+        console.log('')
+        throw new Error('An Error Occurred During The Saving Movie To LocalStorage...')
+    }
 
 }
 

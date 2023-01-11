@@ -1,5 +1,5 @@
 import classes from './index.module.css'
-import axios,{AxiosError} from 'axios'
+import axios, {AxiosError, AxiosResponse} from 'axios'
 import {MovieDetailedType} from "../../types";
 import {useEffect, useState} from "react";
 import MovieCard from "../../components/MovieCard";
@@ -10,32 +10,29 @@ import TitleCard from "../../components/TitleCard";
 import {getMoviesFormStorage, setMoviesToStorage} from "../../helper";
 const VITE_IMDB_KEY = import.meta.env.VITE_IMDB_KEY
 
-type ParamsType = {
-    imdbID: string
-}
+type ParamsType = { imdbID: string }
 
 function MovieDetailsPage() {
 
     const {imdbID} = useParams() as ParamsType
     const URL = `https://www.omdbapi.com/?apikey=${VITE_IMDB_KEY}&i=${imdbID}&plot=full`
-    const [detailedMovie,setDetailedMovie]= useState<MovieDetailedType|null>(getMoviesFormStorage(imdbID))
-    let [error,setError] = useState<AxiosError|undefined>()
+    const [detailedMovie,setDetailedMovie]= useState<MovieDetailedType|null>(getMoviesFormStorage<MovieDetailedType>(imdbID))
 
     useEffect(()=>{
         if(detailedMovie === null)
         (async function getMovieDetails() {
             await axios.get<MovieDetailedType>(URL)
-                .then( ({data}) => {
-                    setMoviesToStorage(imdbID,data)
-                    setDetailedMovie(data)
+                .then( (response:AxiosResponse) => {
+                    const data = response.data as MovieDetailedType
+                    setMoviesToStorage<MovieDetailedType>(imdbID,data)
+                    const savedData = getMoviesFormStorage<MovieDetailedType>(imdbID)
+                    setDetailedMovie(savedData)
                 })
-                .catch( (error:AxiosError) => setError(error))
+                .catch( (error:AxiosError) => { throw new Error(error.message)})
         })()
     },[])
 
     function conditionalRendering() {
-        if (error)
-            return <h1>{error.message}</h1>
         if (!detailedMovie)
             return <Loading/>
         return <>
@@ -54,9 +51,8 @@ function MovieDetailsPage() {
         </>
     }
 
-    return <>
-        {conditionalRendering()}
-    </>
+    return conditionalRendering()
+
 }
 
 export default MovieDetailsPage

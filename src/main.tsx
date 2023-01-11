@@ -1,4 +1,4 @@
-import React, {Suspense, SuspenseProps} from 'react'
+import React, {Suspense} from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import StateContextProvider from "./store/StateContext";
@@ -12,6 +12,7 @@ import {CONTACT_US_ROUTE, FAVORITE_ROUTE, HOME_ROUTE, LAYOUT_ROUTE, MOVIE_DETAIL
 import Layout from "./layout";
 import ErrorPage from "./pages/ErrorPage";
 import Loading from "./components/Loading";
+import ErrorBoundary from "./errors/ErrorBoundary";
 // Lazy Component
 const HomePage = React.lazy(() => import("./pages/HomePage"))
 const FavoriteMoviesPage = React.lazy(() => import("./pages/FavoriteMoviesPage"))
@@ -22,21 +23,23 @@ const ContactUsPage = React.lazy(() => import("./pages/ContactUsPage"))
 // REACT-ROUTER => OLDER ( I Liked Jsx style more )
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <StateContextProvider>
-            <Router>
-                <Suspense fallback={<Loading/>}>
-                    <Routes>
-                        <Route path={LAYOUT_ROUTE} element={<Layout/>} errorElement={<ErrorPage/>}>
-                            <Route index element={<HomePage/>}/>
-                            <Route path={HOME_ROUTE} element={<HomePage/>}/>
-                            <Route path={FAVORITE_ROUTE} element={<FavoriteMoviesPage/>}/>
-                            <Route path={CONTACT_US_ROUTE} element={<ContactUsPage/>}/>
-                            <Route path={MOVIE_DETAILS_ROUTE} element={<MovieDetailsPage/>}/>
-                        </Route>
-                    </Routes>
-                </Suspense>
-            </Router>
-        </StateContextProvider>
+        <ErrorBoundary>
+            <StateContextProvider>
+                <Router>
+                    <Suspense fallback={<Loading/>}>
+                        <Routes>
+                            <Route path={LAYOUT_ROUTE} element={<Layout/>} errorElement={<ErrorPage/>}>
+                                <Route index element={<HomePage/>}/>
+                                <Route path={HOME_ROUTE} element={<HomePage/>}/>
+                                <Route path={FAVORITE_ROUTE} element={<FavoriteMoviesPage/>}/>
+                                <Route path={CONTACT_US_ROUTE} element={<ContactUsPage/>}/>
+                                <Route path={MOVIE_DETAILS_ROUTE} element={<MovieDetailsPage/>}/>
+                            </Route>
+                        </Routes>
+                    </Suspense>
+                </Router>
+            </StateContextProvider>
+        </ErrorBoundary>
     </React.StrictMode>,
 )
 

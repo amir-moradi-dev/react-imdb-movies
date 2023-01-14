@@ -13,6 +13,9 @@ function ErrorDetails(props:ErrorDetailsProps) {
             <h3>Some Thing Went Wrong</h3>
             <p>{props.error?.message}</p>
         </TitleCard>
+        <pre className={classes.errorDetails}>
+            {JSON.stringify(props,null,2)}
+        </pre>
     </>
 }
 

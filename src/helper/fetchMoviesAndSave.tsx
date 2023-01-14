@@ -1,31 +1,29 @@
 import axios, {AxiosError, AxiosResponse} from "axios";
 import {doesMovieExists, setMoviesToStorage} from ".";
 import {getMoviesFormStorage} from '.';
+import {ThrowAsyncErrorType} from "../hooks/useThrowAsyncError";
 
-const VITE_IMDB_KEY = import.meta.env.VITE_IMDB_KEY
 // T is either => ( MovieDetailedType || MovieListType )
 type DataCollection<T> = {
     Search:T
 }
 
-async function fetchMoviesAndSave<T>(movieName: string):Promise<T|null> {
-    if(doesMovieExists(movieName))
+async function fetchMoviesAndSave<T>(URL:string,movieName: string,throwAsyncError:ThrowAsyncErrorType) {
+    if(doesMovieExists(movieName)) {
         return getMoviesFormStorage<T>(movieName)
-
-    const URL = `https://www.omdbapi.com/?apikey=${VITE_IMDB_KEY}&s=${movieName}&plot=short`
-
-    function successfulRequest(response:AxiosResponse) {
-        const data = response.data as DataCollection<T>
-        console.log(data)
+    }
+    async function successfulRequest(response:AxiosResponse) {
+        const data = await response.data as DataCollection<T>
         const search = data.Search as T
         setMoviesToStorage<T>(movieName,search)
-        return search
     }
-
-    console.log('making request')
-    return await axios.get<DataCollection<T>>(URL)
+    await axios.get<DataCollection<T>>(URL,{timeout:5000})
         .then(successfulRequest)
-        .catch( (error:AxiosError)=> {throw new Error(error.message)})
+        .catch( (error:AxiosError)=> {
+            console.log(error)
+            if(error.code==='ECONNABORTED')
+              throwAsyncError(new Error('sorry we could not find your movie'))
+        })
 }
 
 export {fetchMoviesAndSave}

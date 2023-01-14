@@ -16,7 +16,7 @@ export const StateContext = createContext<StateContextType>(null)
 function StateContextProvider({children}: {children:ReactNode}) {
 
     const [searchKey,setSearchKey] = useState<string>('iron man')
-    const [loading,setLoading] =  useState<boolean>(true)
+    const [loading,setLoading] =  useState<boolean>(false)
     const [favoriteMovies,setFavoriteMovies]= useState<MovieListType|[]>([])
     const state = {
         searchKey,setSearchKey,

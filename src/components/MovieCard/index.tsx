@@ -7,8 +7,10 @@ type MovieCardPropsType = {
 }
 
 function MovieCard(props:MovieCardPropsType) {
+    const newClassName = props.className ? props.className : ''
+
     return <>
-        <div className={classes.movieContainer +' '+ props.className}>
+        <div className={classes.movieContainer +' '+ newClassName}>
             {props.children}
         </div>
     </>

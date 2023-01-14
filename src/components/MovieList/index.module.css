@@ -5,16 +5,16 @@
 
 @media screen and (min-width: 699px) {
     .movieListContainer {
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
     }
 }
 @media screen and (min-width: 999px) {
     .movieListContainer {
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 @media screen and (min-width: 1499px) {
     .movieListContainer {
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }

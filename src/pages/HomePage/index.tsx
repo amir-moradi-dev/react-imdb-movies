@@ -1,11 +1,13 @@
 import classes from './index.module.css'
 import SearchIcon from "@mui/icons-material/Search";
 import MovieList from "../../components/MovieList";
-import React, {useContext} from "react";
-import {StateContext} from "../../store/StateContext";
+import React, {useContext, useEffect} from "react";
+import {StateContext} from "../../store/StateContext"
+import Loading from "../../components/Loading"
 
 function HomePage() {
-    const searchKeyCtx = useContext(StateContext)?.searchKey
+    const {searchKey:searchKeyCtx,loading:LoadingCtx} = useContext(StateContext)
+    useEffect(()=>{},[LoadingCtx])
 
     return <>
         {searchKeyCtx && (
@@ -16,6 +18,7 @@ function HomePage() {
                 </div>
             </div>
         )}
+        {LoadingCtx&&<Loading />}
         <MovieList />
     </>
 }

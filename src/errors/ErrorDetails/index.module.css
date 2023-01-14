@@ -1,4 +1,17 @@
 .cardTitle {
-    background: darkred;
+    width: 77%;
+    margin: 0 auto;
+    margin-top: 66px;
+    padding: 33px;
+    background: #b92828;
+    box-shadow: 0 -3px 7px 0 #8b0000e0;
     color: white;
+}
+.errorDetails {
+    width: 75%;
+    margin: 33px auto;
+    display: flex;
+    font-size: 12px;
+    background: #eaeaea;
+    overflow: scroll;
 }

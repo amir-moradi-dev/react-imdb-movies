@@ -4,7 +4,7 @@ import MovieList from "../../components/MovieList";
 import React, {useContext, useEffect} from "react";
 import {StateContext} from "../../store/StateContext"
 import Loading from "../../components/Loading"
-
+// TODO Add Error To The Context And Show It To The User If Error Existed
 function HomePage() {
     const {searchKey:searchKeyCtx,loading:LoadingCtx} = useContext(StateContext)
     useEffect(()=>{},[LoadingCtx])

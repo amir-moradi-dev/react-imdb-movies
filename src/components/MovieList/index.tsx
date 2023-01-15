@@ -12,7 +12,9 @@ const VITE_IMDB_KEY = import.meta.env.VITE_IMDB_KEY
 function MovieList() {
     const {searchKey:SearchKeyCtx, setLoading:SetLoadingCtx}= useContext(StateContext)
     const [movieName, setMovieName] = useState<string>('iron man')
-    const [movieList,setMovieList] = useState<MovieListType|null>(getMoviesFormStorage<MovieListType>(movieName))
+    // lazy initialization
+    const [movieList,setMovieList] = useState<MovieListType|null>(
+        ()=>getMoviesFormStorage<MovieListType>(movieName))
     const url = `https://www.omdbapi.com/?apikey=${VITE_IMDB_KEY}&s=${movieName}&plot=short`
     const throwAsyncError= useThrowAsyncError()
 

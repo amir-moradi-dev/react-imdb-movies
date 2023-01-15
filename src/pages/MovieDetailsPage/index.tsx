@@ -16,7 +16,9 @@ function MovieDetailsPage() {
 
     const {imdbID} = useParams() as ParamsType
     const URL = `https://www.omdbapi.com/?apikey=${VITE_IMDB_KEY}&i=${imdbID}&plot=full`
-    const [detailedMovie,setDetailedMovie]= useState<MovieDetailedType|null>(getMoviesFormStorage<MovieDetailedType>(imdbID))
+    // lazy initialization
+    const [detailedMovie,setDetailedMovie]= useState<MovieDetailedType|null>(
+        ()=>getMoviesFormStorage<MovieDetailedType>(imdbID))
     const throwAsyncError = useThrowAsyncError()
 
     useEffect(()=>{

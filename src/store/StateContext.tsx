@@ -1,13 +1,23 @@
 import React, {createContext, ReactNode,useState} from "react"
-import {MovieListType} from "../types";
+import {
+    AsyncErrorMessageType, FavoriteMoviesType,
+    LoadingType,
+    MovieListType,
+    SearchKeyType,
+    SetAsyncErrorMessageType,
+    SetFavoriteMoviesType,
+    SetLoadingType, SetSearchKeyType
+} from "../types";
 
 type StateContextType = {
-    searchKey:string
-    setSearchKey:React.Dispatch<React.SetStateAction<string>>
-    loading:boolean
-    setLoading:React.Dispatch<React.SetStateAction<boolean>>
-    favoriteMovies:MovieListType|[]
-    setFavoriteMovies:React.Dispatch<React.SetStateAction<MovieListType>>
+    searchKey:SearchKeyType
+    setSearchKey:SetSearchKeyType
+    loading:LoadingType
+    setLoading:SetLoadingType
+    favoriteMovies:FavoriteMoviesType
+    setFavoriteMovies:SetFavoriteMoviesType
+    asyncErrorMessage:AsyncErrorMessageType
+    setAsyncErrorMessage:SetAsyncErrorMessageType
 }
 
 // @ts-ignore
@@ -18,10 +28,12 @@ function StateContextProvider({children}: {children:ReactNode}) {
     const [searchKey,setSearchKey] = useState<string>('iron man')
     const [loading,setLoading] =  useState<boolean>(false)
     const [favoriteMovies,setFavoriteMovies]= useState<MovieListType|[]>([])
-    const state = {
+    const [asyncErrorMessage,setAsyncErrorMessage]= useState<string|null>(null)
+    const state:StateContextType = {
         searchKey,setSearchKey,
         loading,setLoading,
-        favoriteMovies,setFavoriteMovies
+        favoriteMovies,setFavoriteMovies,
+        asyncErrorMessage,setAsyncErrorMessage
     }
 
     return (

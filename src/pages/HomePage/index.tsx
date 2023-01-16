@@ -4,13 +4,15 @@ import MovieList from "../../components/MovieList";
 import React, {useContext, useEffect} from "react";
 import {StateContext} from "../../store/StateContext"
 import Loading from "../../components/Loading"
+import ErrorMessage from "../../components/ErrorMessage";
 // TODO Add Error To The Context And Show It To The User If Error Existed
 function HomePage() {
-    const {searchKey:searchKeyCtx,loading:LoadingCtx} = useContext(StateContext)
+    const {searchKey:searchKeyCtx,loading:LoadingCtx,asyncErrorMessage} = useContext(StateContext)
     useEffect(()=>{},[LoadingCtx])
 
     return <>
-        {searchKeyCtx && (
+        {asyncErrorMessage && <ErrorMessage message={asyncErrorMessage} />}
+        {!asyncErrorMessage && searchKeyCtx && (
             <div className={classes.showSearchedKey}>
                 <div className={classes.showSearchedKey__icon}>
                     <SearchIcon />

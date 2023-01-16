@@ -1,3 +1,7 @@
+import React from "react";
+
+// MovieTypes
+
 export type MovieListType = {
     Title: string,
     Year: string,
@@ -54,3 +58,13 @@ export type MovieDetailedType = {
     "Website": string
     "Response": string
 }
+
+// Context Types
+export type SearchKeyType = string
+export type SetSearchKeyType = React.Dispatch<React.SetStateAction<string>>
+export type LoadingType = boolean
+export type SetLoadingType = React.Dispatch<React.SetStateAction<boolean>>
+export type FavoriteMoviesType = MovieListType|[]
+export type SetFavoriteMoviesType = React.Dispatch<React.SetStateAction<MovieListType>>
+export type AsyncErrorMessageType = string|null
+export type SetAsyncErrorMessageType = React.Dispatch<React.SetStateAction<string|null>>

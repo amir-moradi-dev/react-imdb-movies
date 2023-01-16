@@ -1,0 +1,5 @@
+function useFetchDetailedMovie() {
+
+}
+
+export {useFetchDetailedMovie}

@@ -2,10 +2,9 @@ import axios, {AxiosError, AxiosResponse} from "axios";
 import {doesMovieExists, setMoviesToStorage,getMoviesFormStorage} from "../helper";
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "../store/StateContext";
-import {MovieDetailedType, MovieListType, SearchKeyContextType, StateContextType} from "../types";
+import {SearchKeyContextType} from "../types";
 
-import {getApiUrl} from "../api";
-const VITE_IMDB_KEY = import.meta.env.VITE_IMDB_KEY
+import {getApiUrl} from "../api"
 
 // T is either => ( MovieDetailedType || MovieListType )
 type DataCollection<T> = {
@@ -17,18 +16,21 @@ type UseFetchMoviesAndSaveOptionsType = {
     imdbIDOrMovieName :SearchKeyContextType
 }
 
-function useFetchMoviesAndSave<T>(options:UseFetchMoviesAndSaveOptionsType) {
+function useFetchMoviesAndSave<T>(
+        plotType:UseFetchMoviesAndSaveOptionsType["plotType"] = 'short',
+        imdbIDOrMovieName:UseFetchMoviesAndSaveOptionsType["imdbIDOrMovieName"]=useContext(StateContext).searchKey
+){
 
-    const {plotType,imdbIDOrMovieName} = options
 
     if(doesMovieExists(imdbIDOrMovieName)) {
         return getMoviesFormStorage<T>(imdbIDOrMovieName)
     }
-
     const {
         setLoading:setLoadingCtx,
-        setAsyncErrorMessage:setAsyncErrorMessageCtx
+        setAsyncErrorMessage:setAsyncErrorMessageCtx,
     } = useContext(StateContext)
+
+
 
     const URL = getApiUrl(plotType,imdbIDOrMovieName)
     const [moviesListOrMovie,setMoviesListOrMovie]=useState<T|null>(null)

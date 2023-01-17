@@ -60,11 +60,21 @@ export type MovieDetailedType = {
 }
 
 // Context Types
-export type SearchKeyType = string
-export type SetSearchKeyType = React.Dispatch<React.SetStateAction<string>>
-export type LoadingType = boolean
-export type SetLoadingType = React.Dispatch<React.SetStateAction<boolean>>
-export type FavoriteMoviesType = MovieListType|[]
-export type SetFavoriteMoviesType = React.Dispatch<React.SetStateAction<MovieListType>>
-export type AsyncErrorMessageType = string|null
-export type SetAsyncErrorMessageType = React.Dispatch<React.SetStateAction<string|null>>
+export type SearchKeyContextType = string
+export type SetSearchKeyContextType = React.Dispatch<React.SetStateAction<string>>
+export type LoadingContextType = boolean
+export type SetLoadingContextType = React.Dispatch<React.SetStateAction<boolean>>
+export type FavoriteMoviesContextType = MovieListType|[]
+export type SetFavoriteMoviesContextType = React.Dispatch<React.SetStateAction<MovieListType>>
+export type AsyncErrorMessageContextType = string|null
+export type SetAsyncErrorMessageContextType = React.Dispatch<React.SetStateAction<string|null>>
+export type StateContextType = {
+    searchKey:SearchKeyContextType
+    setSearchKey:SetSearchKeyContextType
+    loading:LoadingContextType
+    setLoading:SetLoadingContextType
+    favoriteMovies:FavoriteMoviesContextType
+    setFavoriteMovies:SetFavoriteMoviesContextType
+    asyncErrorMessage:AsyncErrorMessageContextType
+    setAsyncErrorMessage:SetAsyncErrorMessageContextType
+}

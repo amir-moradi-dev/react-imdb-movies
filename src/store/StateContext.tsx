@@ -1,4 +1,4 @@
-import React, {createContext, ReactNode,useState} from "react"
+import React, {createContext, ReactNode, useContext, useState} from "react"
 import {MovieListType, StateContextType} from "../types";
 
 // @ts-ignore
@@ -24,5 +24,8 @@ function StateContextProvider({children}: {children:ReactNode}) {
         </StateContext.Provider>
     )
 }
+
+
+export const getNameContextValue = ()=>useContext(StateContext).searchKey
 
 export default StateContextProvider

@@ -20,14 +20,14 @@ function useFetchMoviesAndSave<T>(
         imdbIDOrMovieName:UseFetchMoviesAndSaveOptionsType["imdbIDOrMovieName"]=getNameContextValue()
 ){
 
-    if(doesMovieExists(imdbIDOrMovieName)) {
-        return getMoviesFormStorage<T>(imdbIDOrMovieName)
-    }
-
     const {
         setLoading:setLoadingCtx,
         setAsyncErrorMessage:setAsyncErrorMessageCtx,
     } = useContext(StateContext)
+
+    if(doesMovieExists(imdbIDOrMovieName)) {
+        return getMoviesFormStorage<T>(imdbIDOrMovieName)
+    }
 
     const URL = getApiUrl(plotType,imdbIDOrMovieName)
     const [moviesListOrMovie,setMoviesListOrMovie]=useState<T|null>(null)

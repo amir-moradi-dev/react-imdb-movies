@@ -20,7 +20,6 @@ function MovieDetailsPage() {
             return <Loading/>
         return <>
             <MovieCard className={classes.movieDetailsContainer} >
-
                 <MovieTitle movie={detailedMovie} />
 
                 <TitleCard className={classes.movieGenre}>

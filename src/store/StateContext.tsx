@@ -27,5 +27,6 @@ function StateContextProvider({children}: {children:ReactNode}) {
 
 
 export const getNameContextValue = ()=>useContext(StateContext).searchKey
+export const getAsyncErrorMessageContextValue = ()=>useContext(StateContext).asyncErrorMessage
 
 export default StateContextProvider

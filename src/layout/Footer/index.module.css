@@ -1,12 +1,17 @@
 .footer {
-
+    display: flex;
+    font-size: 19px;
+    height: 47px;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
 }
 .footer>div {
     display: flex;
-    align-items: center;
     background: green;
     color: white;
+    align-items: center;
     justify-content: center;
-    font-size: 19px;
-    height: 47px;
+    width: 100%;
+    height: 100%;
 }

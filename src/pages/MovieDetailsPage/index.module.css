@@ -1,4 +1,5 @@
 .movieDetailsContainer {
+    margin: 16px auto !important
 }
 .movieGenre {
     margin-top: 0;
@@ -13,10 +14,14 @@
     line-height: 1.6;
 }
 
-
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 299px) {
+    .movieDetailsContainer {
+        margin: 16px 16px !important;
+    }
+}
+@media screen and (min-width: 699px) {
     .movieDetailsContainer {
         width: 66%;
-        margin: 15px auto;
+        margin: 15px auto !important;
     }
 }

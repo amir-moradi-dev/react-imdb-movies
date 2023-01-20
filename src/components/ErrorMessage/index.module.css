@@ -1,3 +1,9 @@
 .titleCard {
-    background: lightcoral;
+    width: 66%;
+    margin: 33px auto;
+    padding: 33px;
+    background: #ed727263;
+    font-size: 13px;
+    color: #312d2d;
+    font-family: sans, serif;
 }

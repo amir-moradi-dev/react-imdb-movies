@@ -38,7 +38,7 @@ function useFetchMoviesAndSave<T>(
             setLoadingCtx(true)
             console.log('making request')
             await axios
-                .get(URL, {timeout: 5000})
+                .get(URL, {timeout: 10000})
                 .then(handleSuccess)
                 .catch(handleError)
             setLoadingCtx(false)
@@ -65,8 +65,8 @@ function useFetchMoviesAndSave<T>(
     function handleError (error:AxiosError) {
         console.log(error)
         if(error.code==='ECONNABORTED')
-            return setAsyncErrorMessageCtx('sorry we could not find your movie')
-        if(error.code==='NETWORK_ERROR')
+            return setAsyncErrorMessageCtx('your connection is slow please try again (refresh the page!)')
+        if(error.code==='ERR_NETWORK')
             return setAsyncErrorMessageCtx('maybe just maybe your offline')
         else{
             setAsyncErrorMessageCtx('unhandled situation')

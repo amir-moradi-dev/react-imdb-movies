@@ -6,17 +6,23 @@ import Loading from "../../components/Loading";
 import MovieTitle from "../../components/MovieTitle";
 import TitleCard from "../../components/TitleCard";
 import {useFetchMoviesAndSave} from "../../hooks";
+import {getAsyncErrorMessageContextValue} from "../../store/StateContext";
+import ErrorMessage from "../../components/ErrorMessage";
 
 type ParamsType = { imdbID: string }
 
 function MovieDetailsPage() {
 
     const {imdbID} = useParams() as ParamsType
+    const AsyncErrorMessage = getAsyncErrorMessageContextValue()
 
     const detailedMovie = useFetchMoviesAndSave<MovieDetailedType>('full',imdbID)
 
     function conditionalRendering() {
-        if (!detailedMovie)
+        
+        if(AsyncErrorMessage)
+            return <ErrorMessage message={AsyncErrorMessage}/>
+        else if (!detailedMovie)
             return <Loading/>
         return <>
             <MovieCard className={classes.movieDetailsContainer} >
